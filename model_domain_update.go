@@ -14,14 +14,14 @@ type DomainUpdate struct {
 	// Whether or not the domain should be locked to prevent transfers
 	Locked *bool `json:"locked,omitempty"`
 	// Fully-qualified domain names for Name Servers to associate with the domain
-	NameServers *[]map[string]interface{} `json:"nameServers,omitempty"`
+	NameServers *[]string `json:"nameServers,omitempty"`
 	// Whether or not the domain should be configured to automatically renew
 	RenewAuto *bool `json:"renewAuto,omitempty"`
 	// Reseller subaccount shopperid who can manage the domain
 	SubaccountId *string `json:"subaccountId,omitempty"`
 	// Whether or not the domain contact details should be shown in the WHOIS
-	ExposeWhois *bool `json:"exposeWhois,omitempty"`
-	Consent *ConsentDomainUpdate `json:"consent,omitempty"`
+	ExposeWhois *bool                `json:"exposeWhois,omitempty"`
+	Consent     *ConsentDomainUpdate `json:"consent,omitempty"`
 }
 
 // NewDomainUpdate instantiates a new DomainUpdate object
@@ -74,9 +74,9 @@ func (o *DomainUpdate) SetLocked(v bool) {
 }
 
 // GetNameServers returns the NameServers field value if set, zero value otherwise.
-func (o *DomainUpdate) GetNameServers() []map[string]interface{} {
+func (o *DomainUpdate) GetNameServers() []string {
 	if o == nil || o.NameServers == nil {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return *o.NameServers
@@ -84,7 +84,7 @@ func (o *DomainUpdate) GetNameServers() []map[string]interface{} {
 
 // GetNameServersOk returns a tuple with the NameServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainUpdate) GetNameServersOk() (*[]map[string]interface{}, bool) {
+func (o *DomainUpdate) GetNameServersOk() (*[]string, bool) {
 	if o == nil || o.NameServers == nil {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *DomainUpdate) HasNameServers() bool {
 	return false
 }
 
-// SetNameServers gets a reference to the given []map[string]interface{} and assigns it to the NameServers field.
-func (o *DomainUpdate) SetNameServers(v []map[string]interface{}) {
+// SetNameServers gets a reference to the given []string and assigns it to the NameServers field.
+func (o *DomainUpdate) SetNameServers(v []string) {
 	o.NameServers = &v
 }
 
@@ -291,5 +291,3 @@ func (v *NullableDomainUpdate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
