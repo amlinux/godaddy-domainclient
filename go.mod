@@ -1,4 +1,4 @@
-module github.com/kryptoslogic/godaddy-domainclient
+module github.com/amlinux/godaddy-domainclient
 
 go 1.15
 
